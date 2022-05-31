@@ -139,29 +139,6 @@ func (obj *Transpiler) Transpile(text string) []string {
 
 	result = append(result, newWordEnglish)
 
-	//Наивный алгорим
-	/*
-		'sch':'ш', 'ya':'я', '\Aand\Z':'энд'
-
-		'\Ay(?=[euioa])':'й',
-		'\Ae(?![euioay-])':'э',
-		'(?<=[euioa])y\Z':'й',
-		'(?<![euioa])y\Z':'и',
-		'(?<=[euioa])c(?=[euioay-])':'с'
-
-
-
-		'b':'б', 'c':'к', 'd':'д', 'f':'ф', 'g':'г', 'h':'х',
-		'j':'й', 'k':'к', 'l':'л', 'm':'м', 'n':'н', 'p':'п',
-		'q':'к', 'r':'р', 's':'с', 't':'т', 'v':'в', 'w':'в',
-		'x':'х', 'z':'з', 'a':'а',  'e':'е',  'i':'и',
-		'u':'у', 'o':'о',  'y':'и',
-		'ß':'сс', 'ö':'о', 'ä':'а', 'ü':'у', 'é':'е', 'è':'е',
-		'à':'а', 'ù':'у', 'ê':'е', 'â':'а', 'ô':'о', 'î':'и',
-		'û':'у', 'ë':'е', 'ï':'и', 'ÿ':'и', 'ç':'с'
-
-	*/
-
 	return removeDuplicateStr(result)
 
 }
@@ -175,7 +152,6 @@ func main() {
 	fmt.Println(trans.Transpile("bergauf"))
 	fmt.Println(trans.Transpile("knauf"))
 
-	fmt.Println(trans.Transpile("megastroy"))
 	fmt.Println(trans.Transpile("zelda"))
 	fmt.Println(trans.Transpile("argotech"))
 	fmt.Println(trans.Transpile("rossinka"))
