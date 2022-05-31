@@ -139,6 +139,28 @@ func (obj *Transpiler) Transpile(text string) []string {
 
 	result = append(result, newWordEnglish)
 
+	if len([]rune(text)) <= 4 {
+		abbrRules := [][]string{
+			{`b`, `би`}, {`c`, `си`}, {`d`, `ди`}, {`f`, `эф`},
+			{`g`, `джи`}, {`h`, `эйч`}, {`j`, `джей`}, {`k`, `кей`},
+			{`l`, `эль`}, {`m`, `эм`}, {`n`, `эн`}, {`p`, `пи`},
+			{`q`, `кью`}, {`r`, `эр`}, {`s`, `эс`}, {`t`, `ти`},
+			{`v`, `ви`}, {`w`, `дабл ю`}, {`x`, `икс`}, {`z`, `зед`},
+			{`a`, `эй`}, {`o`, `оу`}, {`i`, `ай`}, {`u`, `ю`},
+			{`e`, `и`}, {`y`, `вай`},
+		}
+
+		newWordAbbr := text
+
+		for _, twoRules := range abbrRules {
+			re := regexp.MustCompile(twoRules[0], 0)
+			newWordAbbr, _ = re.ReplaceAllString(newWordAbbr, twoRules[1], 0)
+
+		}
+
+		result = append(result, newWordAbbr)
+	}
+
 	return removeDuplicateStr(result)
 
 }
@@ -155,4 +177,11 @@ func main() {
 	fmt.Println(trans.Transpile("zelda"))
 	fmt.Println(trans.Transpile("argotech"))
 	fmt.Println(trans.Transpile("rossinka"))
+
+	fmt.Println(trans.Transpile("trabadath"))
+	fmt.Println(trans.Transpile("obs"))
+	fmt.Println(trans.Transpile("chs"))
+	fmt.Println(trans.Transpile("fbi"))
+
+	fmt.Println(trans.Transpile("tytan"))
 }
