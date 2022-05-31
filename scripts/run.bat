@@ -1,0 +1,1 @@
+go build && megastroy-import.exe --import_test-data=examples/real-first-50.json
