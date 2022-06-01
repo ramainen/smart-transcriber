@@ -1,4 +1,4 @@
-module github.com/ramainen/go-smart-transcriber
+module github.com/ramainen/smart-transcriber
 
 go 1.18
 
