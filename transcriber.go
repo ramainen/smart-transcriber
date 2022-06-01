@@ -1,8 +1,7 @@
-package main
+package transcriber
 
 import (
 	"encoding/csv"
-	"fmt"
 	"log"
 	"os"
 	"path/filepath"
@@ -11,7 +10,7 @@ import (
 	regexp "github.com/scorpionknifes/go-pcre"
 )
 
-type Transpiler struct {
+type Transcriber struct {
 	Dict map[string][]string
 }
 
@@ -26,9 +25,9 @@ func removeDuplicateStr(strSlice []string) []string {
 	}
 	return list
 }
-func NewTranspiler() Transpiler {
-	transpiler := Transpiler{}
-	transpiler.Dict = map[string][]string{}
+func NewTranscriber() Transcriber {
+	trascriber := Transcriber{}
+	trascriber.Dict = map[string][]string{}
 	//Load Dict
 	ex, err := os.Executable()
 	if err != nil {
@@ -52,17 +51,17 @@ func NewTranspiler() Transpiler {
 		if len(row) != 2 {
 			continue
 		}
-		if _, isset := transpiler.Dict[row[0]]; !isset {
-			transpiler.Dict[row[0]] = []string{row[1]}
+		if _, isset := trascriber.Dict[row[0]]; !isset {
+			trascriber.Dict[row[0]] = []string{row[1]}
 		} else {
-			transpiler.Dict[row[0]] = append(transpiler.Dict[row[0]], row[1])
+			trascriber.Dict[row[0]] = append(trascriber.Dict[row[0]], row[1])
 		}
 	}
 
-	return transpiler
+	return trascriber
 }
 
-func (obj *Transpiler) Transpile(text string) []string {
+func (obj *Transcriber) Transcribe(text string) []string {
 	result := []string{}
 
 	//1. Got correct word from dictionary
@@ -315,33 +314,5 @@ func (obj *Transpiler) Transpile(text string) []string {
 	}
 
 	return removeDuplicateStr(result)
-
-}
-func main() {
-
-	trans := NewTranspiler()
-	fmt.Println("apple ->", trans.Transpile("apple"))
-	fmt.Println("makita ->", trans.Transpile("makita"))
-	fmt.Println("bosch ->", trans.Transpile("bosch"))
-	fmt.Println("xiaomi ->", trans.Transpile("xiaomi"))
-	fmt.Println("bergauf ->", trans.Transpile("bergauf"))
-	fmt.Println("knauf ->", trans.Transpile("knauf"))
-
-	fmt.Println("zelda ->", trans.Transpile("zelda"))
-	fmt.Println("argotech ->", trans.Transpile("argotech"))
-	fmt.Println("rossinka ->", trans.Transpile("rossinka"))
-
-	fmt.Println("trabadath ->", trans.Transpile("trabadath"))
-	fmt.Println("obs ->", trans.Transpile("obs"))
-	fmt.Println("chs ->", trans.Transpile("chs"))
-	fmt.Println("fbi ->", trans.Transpile("fbi"))
-
-	fmt.Println("tytan ->", trans.Transpile("tytan"))
-	fmt.Println("qwerty ->", trans.Transpile("qwerty"))
-	fmt.Println("microsoft ->", trans.Transpile("microsoft"))
-	fmt.Println("huawey ->", trans.Transpile("huawey"))
-	fmt.Println("bmw ->", trans.Transpile("bmw"))
-
-	fmt.Println("wolfenstein ->", trans.Transpile("wolfenstein"))
 
 }
