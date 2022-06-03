@@ -41,5 +41,6 @@ func main() {
 	fmt.Println("merlin ->", trans.Transcribe("merlin"))
 	fmt.Println("matrix  ->", trans.Transcribe("matrix"))
 	fmt.Println("philips  ->", trans.Transcribe("philips"))
+	fmt.Println("osb  ->", trans.Transcribe("осп"))
 
 }

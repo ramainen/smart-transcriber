@@ -6,12 +6,16 @@ import (
 	"os"
 	"path/filepath"
 
-	//"regexp"
+	nativeregexp "regexp"
+
 	regexp "github.com/scorpionknifes/go-pcre"
 )
 
 type Transcriber struct {
-	Dict map[string][]string
+	Dict              map[string][]string
+	KnownRuToEnDict   map[string]string
+	onlyEnglishRegexp *nativeregexp.Regexp
+	KnownWords        map[string]int
 }
 
 func removeDuplicateStr(strSlice []string) []string {
@@ -28,6 +32,13 @@ func removeDuplicateStr(strSlice []string) []string {
 func NewTranscriber() Transcriber {
 	trascriber := Transcriber{}
 	trascriber.Dict = map[string][]string{}
+	trascriber.KnownRuToEnDict = map[string]string{}
+	trascriber.KnownWords = map[string]int{}
+
+	trascriber.onlyEnglishRegexp = nativeregexp.MustCompile(`^[a-z]+$`)
+
+	return trascriber
+
 	//Load Dict
 	ex, err := os.Executable()
 	if err != nil {

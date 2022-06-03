@@ -7,6 +7,8 @@
 *.dll
 *.so
 *.dylib
+./go-smart-transcriber
+./smart-transcriber
 
 # Test binary, build with `go test -c`
 *.test
