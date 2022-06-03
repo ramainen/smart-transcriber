@@ -19,6 +19,7 @@ func main() {
 	fmt.Println("zelda ->", trans.Transcribe("zelda"))
 	fmt.Println("argotech ->", trans.Transcribe("argotech"))
 	fmt.Println("rossinka ->", trans.Transcribe("rossinka"))
+	fmt.Println("mallllinka ->", trans.Transcribe("mallllinka"))
 
 	fmt.Println("trabadath ->", trans.Transcribe("trabadath"))
 	fmt.Println("obs ->", trans.Transcribe("obs"))
@@ -32,7 +33,7 @@ func main() {
 	fmt.Println("bmw ->", trans.Transcribe("bmw"))
 
 	fmt.Println("wolfenstein ->", trans.Transcribe("wolfenstein"))
-	fmt.Println("morgerstern ->", trans.Transcribe("morgerstern"))
+	fmt.Println("morgenstern ->", trans.Transcribe("morgenstern"))
 	fmt.Println("multfilm ->", trans.Transcribe("multfilm"))
 	fmt.Println("bolt ->", trans.Transcribe("bolt"))
 	fmt.Println("object ->", trans.Transcribe("object"))
@@ -41,6 +42,6 @@ func main() {
 	fmt.Println("merlin ->", trans.Transcribe("merlin"))
 	fmt.Println("matrix  ->", trans.Transcribe("matrix"))
 	fmt.Println("philips  ->", trans.Transcribe("philips"))
-	fmt.Println("osb  ->", trans.Transcribe("осп"))
+	fmt.Println("osb  ->", trans.Transcribe("osb"))
 
 }
